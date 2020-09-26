@@ -13,13 +13,19 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: BACKGROUND_COLOR,
+        child: Icon(Icons.add),
+      ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 20),
         children: [
           SizedBox(height: 60),
           _topInfo(),
           SizedBox(height: 30),
-          _hoizontalSliderOfRecentPlants(),
+          _recentPlants(),
           SizedBox(height: 30),
           _recentServicesWidget()
         ],
@@ -47,7 +53,22 @@ ListTile _topInfo() {
   );
 }
 
-Widget _hoizontalSliderOfRecentPlants() {
+Widget _recentPlants() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        "Minhas plantas",
+        style: TextStyle(
+            color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
+      ),
+      SizedBox(height: 10),
+      _horizontalSliderOfRecentPlants()
+    ],
+  );
+}
+
+Widget _horizontalSliderOfRecentPlants() {
   return Container(
       child: Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,7 +129,7 @@ Widget _recentServicesWidget() {
       Text(
         "Serviços recentes",
         style: TextStyle(
-            color: BACKGROUND_COLOR, fontSize: 30, fontWeight: FontWeight.bold),
+            color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
       ),
       _recentServicesList()
     ],
